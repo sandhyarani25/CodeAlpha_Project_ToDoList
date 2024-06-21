@@ -1,70 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Age Calculator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 50px;
-        }
-        .container {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        input, button {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            font-size: 16px;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Age Calculator</h1>
-        <label for="dob">Enter Date of Birth:</label>
-        <input type="date" id="dob">
-        <button onclick="calculateAge()">Calculate Age</button>
-        <h2 id="result"></h2>
-    </div>
-
-    <script>
-        function calculateAge() {
-            const dobInput = document.getElementById('dob').value;
-            if (!dobInput) {
-                alert("Please enter your date of birth");
-                return;
-            }
-
-            const dob = new Date(dobInput);
-            const today = new Date();
-
-            let age = today.getFullYear() - dob.getFullYear();
-            const monthDifference = today.getMonth() - dob.getMonth();
-            const dayDifference = today.getDate() - dob.getDate();
-
-            // Adjust age if the current month and day is before the birth month and day
-            if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
-                age--;
-            }
-
-            document.getElementById('result').textContent = Your age is: ${age} years;
-        }
-    </script>
-</body>
+<html>
+    <head>
+        <meta name="viewport" content="width=devoce-width,initial-scale=1.0">
+        <title>Calculator</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="calculator">
+                <form>
+                    <div class="display">
+                        <input type = "text" name="display">
+                    </div>
+                    <div>
+                        <input type="button" value="AC" onclick="display.value = ''" class="operator">
+                        <input type="button" value="DE" onclick="display.value = display.value.toString().slice(0,-1)" class="operator">
+                        <input type="button" value="." onclick="display.value += '.'" class="operator">
+                        <input type="button" value="/" onclick="display.value += '/'" class="operator">
+                    </div>
+                    <div>
+                        <input type="button" value="7" onclick="display.value += '7'">
+                        <input type="button" value="8" onclick="display.value += '8'">
+                        <input type="button" value="9" onclick="display.value += '9'">
+                        <input type="button" value="" onclick="display.value += ''" class="operator">
+                    </div>
+                    <div>
+                        <input type="button" value="4" onclick="display.value += '4'">
+                        <input type="button" value="5" onclick="display.value += '5'">
+                        <input type="button" value="6" onclick="display.value += '6'">
+                        <input type="button" value="-" onclick="display.value += '-'" class="operator">
+                    </div>
+                    <div>
+                        <input type="button" value="1" onclick="display.value += '1'">
+                        <input type="button" value="2" onclick="display.value += '2'">
+                        <input type="button" value="3" onclick="display.value += '3'">
+                        <input type="button" value="+" onclick="display.value += '+'" class="operator">
+                    </div>
+                    <div>
+                        <input type="button" value="00" onclick="display.value += '00'">
+                        <input type="button" value="0"  onclick="display.value += '0'">
+                        <input type="button" value="=" onclick="display.value = eval(display.value)"  class="equal operator">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
 </html>
